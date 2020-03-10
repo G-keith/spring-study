@@ -1,0 +1,29 @@
+server:
+  port: 9000 #端口
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    database1:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/boot?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+      username: root
+      password: manager
+      initialSize: 1  #初始化大小
+      minIdle: 1  #空闲连接池的大小
+      maxActive: 50 #最大激活数量
+    database2:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/boot?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+      username: root
+      password: manager
+      initialSize: 1  #初始化大小
+      minIdle: 1  #空闲连接池的大小
+      maxActive: 50 #最大激活数量
+jwt:
+  secret: QBXMQzhlGh8n0Y2D6VIbhjPc2dlec8aiCRRW
+#日志打印SQL
+logging:
+  level:
+    com.keith: debug  #日志级别

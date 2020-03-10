@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 /**
  * security配置
  *
- * @author ziv
+ * @author keith
  * @date 2019-03-06
  */
 @Configuration
@@ -58,12 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.GET,
                         "/v2/api-docs",
-                        "/configuration/ui",
                         "/swagger-resources/**",
-                        "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**",
-                        "/swagge‌​r-ui.html")
+                        "/doc.html")
                 .permitAll();
 
         // 添加token过滤器

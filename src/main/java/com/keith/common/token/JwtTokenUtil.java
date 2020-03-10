@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * jwt工具类
- * @author ziv
+ * @author keith
  * @date 2019-03-07
  */
 @Slf4j

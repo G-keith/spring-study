@@ -5,7 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * security工具类
- * @author ziv
+ * @author keith
  * @date 2019-04-18
  */
 public class SecurityUserUtil {

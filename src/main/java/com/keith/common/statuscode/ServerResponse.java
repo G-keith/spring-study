@@ -1,6 +1,7 @@
 package com.keith.common.statuscode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
@@ -16,14 +17,17 @@ public class ServerResponse<T> implements Serializable {
     /**
      *状态
      */
+    @ApiModelProperty(value = "0失败，1成功")
     private int status;
     /**
      *消息
      */
+    @ApiModelProperty(value = "消息")
     private String msg;
     /**
      *数据
      */
+    @ApiModelProperty(value = "数据")
     private T data;
 
     private ServerResponse(int status) {

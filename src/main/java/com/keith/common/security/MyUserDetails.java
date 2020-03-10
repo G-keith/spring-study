@@ -8,7 +8,7 @@ import java.util.Collection;
 
 /**
  * 用户信息类
- * @author ziv
+ * @author keith
  * @date 2019-03-06
  */
 public class MyUserDetails implements UserDetails {

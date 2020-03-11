@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author keith
@@ -22,6 +23,18 @@ public class UserService {
 
     public ServerResponse<Integer> insertUser(SysUser sysUser){
         return ServerResponse.createBySuccess(userMapper.insertUser(sysUser));
+    }
+
+    public void testOptional(Integer userId){
+        Optional<SysUser> sysUser=userMapper.find(userId);
+        System.out.println(sysUser);
+        sysUser.ifPresent(System.out::println);
+    }
+
+    public static void main(String[] args) {
+        SysUser sysUser=new SysUser();
+        Optional<String> optCompany = Optional.ofNullable(sysUser.getPassword());
+        optCompany.ifPresent(System.out::println);
     }
 
 }

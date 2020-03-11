@@ -1,5 +1,6 @@
 package com.keith.project.controller;
 
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.keith.common.security.MyUserDetails;
 import com.keith.common.statuscode.ServerResponse;
 import com.keith.common.token.JwtTokenUtil;
@@ -26,10 +27,10 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date 2020-03-10
  **/
-@Api(tags = "系统后台登录接口")
-@RestController
-@RequestMapping(value = "test")
 @Slf4j
+@Api(tags = "系统后台登录接口")
+@RequestMapping(value = "test")
+@RestController
 public class UserController {
 
     @Resource
@@ -44,6 +45,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @ApiOperationSupport(author = "keith")
     @ApiOperation(value = "登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "loginName", value = "登录名", dataType = "string", required = true),
@@ -65,10 +67,20 @@ public class UserController {
         return ServerResponse.createBySuccess(tokenInfo);
     }
 
+    @ApiOperationSupport(author = "keith")
     @ApiOperation(value = "注册")
     @PostMapping(value = "register")
     public ServerResponse<Integer> register(@RequestBody SysUser sysUser){
         sysUser.setPassword(new BCryptPasswordEncoder().encode(sysUser.getPassword()));
         return userService.insertUser(sysUser);
+    }
+
+    @ApiOperation(value = "测试")
+    @PostMapping(value = "test")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "主键id", dataType = "int", required = true),
+    })
+    public void test(Integer userId){
+        userService.testOptional(userId);
     }
 }

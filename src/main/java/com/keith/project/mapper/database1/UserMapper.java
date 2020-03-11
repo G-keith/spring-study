@@ -3,6 +3,8 @@ package com.keith.project.mapper.database1;
 import com.keith.project.entity.SysUser;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * @author keith
  * @version 1.0
@@ -24,4 +26,11 @@ public interface UserMapper {
      * @return
      */
     int insertUser(SysUser sysUser);
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    Optional<SysUser> find(Integer userId);
 }

@@ -40,4 +40,8 @@
             </if>
         </trim>
     </insert>
+
+    <select id="find" resultType="com.keith.project.entity.SysUser">
+        select * from user where userId=#{userId};
+    </select>
 </mapper>

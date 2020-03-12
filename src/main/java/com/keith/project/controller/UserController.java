@@ -74,13 +74,4 @@ public class UserController {
         sysUser.setPassword(new BCryptPasswordEncoder().encode(sysUser.getPassword()));
         return userService.insertUser(sysUser);
     }
-
-    @ApiOperation(value = "测试")
-    @PostMapping(value = "test")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "主键id", dataType = "int", required = true),
-    })
-    public void test(Integer userId){
-        userService.testOptional(userId);
-    }
 }

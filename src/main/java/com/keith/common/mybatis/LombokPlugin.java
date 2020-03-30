@@ -38,7 +38,6 @@ public class LombokPlugin extends PluginAdapter {
 
         //添加domain的注解
         String remarks=introspectedTable.getRemarks();
-        System.out.println(remarks);
         topLevelClass.addAnnotation("@Data");
         topLevelClass.addAnnotation("@ApiModel(description = \""+remarks+"\")");
 //        topLevelClass.addAnnotation("@Builder");

@@ -3,10 +3,8 @@ package com.keith.common.mybatis;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.internal.util.StringUtility;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,6 +52,35 @@ public class LombokPlugin extends PluginAdapter {
         return true;
     }
 
+    /**
+     * 给实体字段添加swagger注释
+     */
+    @Override
+    public boolean modelFieldGenerated(Field field, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn,
+                                       IntrospectedTable introspectedTable, ModelClassType modelClassType) {
+        String remarks = introspectedColumn.getRemarks();
+        if (StringUtility.stringHasValue(remarks)) {
+            addFieldJavaDoc(field, remarks);
+            field.addJavaDocLine("@ApiModelProperty(value = \"" + remarks + "\" )");
+        }
+        addFieldJavaDoc(field,remarks);
+        return true;
+    }
+
+    /**
+     * 给model的字段添加注释
+     */
+    private void addFieldJavaDoc(Field field, String remarks) {
+        field.addJavaDocLine("/**");
+        //换行
+        String[] remarkLines=remarks.split(System.getProperty("line.separator"));
+        field.addJavaDocLine(" * "+remarkLines[0]);
+        field.addJavaDocLine(" */");
+    }
+
+    /**
+     * 给dao添加注释
+     */
     @Override
     public boolean clientGenerated(Interface interfaze,IntrospectedTable introspectedTable) {
         FullyQualifiedJavaType importedType1=new FullyQualifiedJavaType("org.springframework.stereotype.Repository");

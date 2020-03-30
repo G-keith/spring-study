@@ -23,8 +23,12 @@
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/job_time?useUnicode=true&amp;characterEncoding=utf-8&amp;nullCatalogMeansCurrent=true&amp;serverTimezone=GMT%2B8"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/job_time?useUnicode=true&amp;serverTimezone=GMT%2B8"
                         userId="root" password="manager">
+            <!--生成更新插入方法-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+            <!--获取表注释-->
+            <property name="useInformationSchema" value="true" />
         </jdbcConnection>
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
         <javaTypeResolver>
@@ -48,8 +52,12 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="code" domainObjectName="Code" enableCountByExample="false" enableUpdateByExample="true"
-               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="false">
+        <table tableName="code2" domainObjectName="Code"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="true" />
         </table>
     </context>

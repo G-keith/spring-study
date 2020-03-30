@@ -37,8 +37,10 @@ public class LombokPlugin extends PluginAdapter {
 //        topLevelClass.addImportedType("lombok.AllArgsConstructor");
 
         //添加domain的注解
+        String remarks=introspectedTable.getRemarks();
+        System.out.println(remarks);
         topLevelClass.addAnnotation("@Data");
-        topLevelClass.addAnnotation("@ApiModel(description = \"\")");
+        topLevelClass.addAnnotation("@ApiModel(description = \""+remarks+"\")");
 //        topLevelClass.addAnnotation("@Builder");
 //        topLevelClass.addAnnotation("@NoArgsConstructor");
 //        topLevelClass.addAnnotation("@AllArgsConstructor");
